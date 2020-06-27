@@ -60,4 +60,4 @@ ps : select `fonzip.php` config file
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/tanerincode/fonzip/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/tanerincode/fonzip-laravel-package/blob/master/LICENSE) file for details
