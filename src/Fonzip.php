@@ -17,8 +17,4 @@ use TanerInCode\Fonzip\Classes\FonzipDataManager;
 class Fonzip extends FonzipDataManager
 {
 
-    public function apiRoutes() {
-        include ('./routes.php');
-    }
-
 }
