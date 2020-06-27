@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TanerInCode\Fonzip\Support\Facades;
+namespace TanerInCode\Fonzip\Support\Traits;
 
 
 use GuzzleHttp\Client;
@@ -13,7 +13,6 @@ trait Requester
 {
     public $base_url;
     public $options;
-    public $client;
 
     public function setter(bool $verify = true)
     {

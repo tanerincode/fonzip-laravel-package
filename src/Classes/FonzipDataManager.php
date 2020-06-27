@@ -7,12 +7,11 @@ namespace TanerInCode\Fonzip\Classes;
 use App\Models\Ngo;
 use Illuminate\Support\Facades\Validator;
 use TanerInCode\Fonzip\Models\Donation;
-use TanerInCode\Fonzip\Support\Facades\Requester;
-use TanerInCode\Fonzip\Support\Traits\FonzipResponseHandler;
+use TanerInCode\Fonzip\Support\Traits\Requester;
 
 class FonzipDataManager
 {
-    use FonzipResponseHandler, Requester;
+    use Requester;
 
     public function sendPayment(array $data)
     {
@@ -33,7 +32,11 @@ class FonzipDataManager
         $validator = Validator::make($data, $rules);
         if ( $validator->fails() )
         {
-            return $this->handleResponse(1, (array) $validator->errors());
+            return [
+                'result'  => 'error',
+                'message' => trans('fonzip:errors.validation_error'),
+                'errors'  => $validator->errors()
+            ];
         }
 
         $creatingData = [
@@ -50,7 +53,10 @@ class FonzipDataManager
 
         $accessToken = self::getAccessToken($data['ngo_id']);
         if ( isset($accessToken['success']) && $accessToken['success'] == false ){
-            return $this->handleResponse(1, $accessToken);
+            return [
+                'result'  => 'error',
+                'message' => trans('fonzip:errors.access_token_error'),
+            ];
         }
 
         $data['access_token'] = $accessToken;
