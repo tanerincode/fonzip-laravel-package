@@ -16,7 +16,7 @@ class FonzipServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__.'/translations', 'fonzip');
         $this->publishes([
-            __DIR__ . '/config/fonzip.php' => config_path('fonzip.php'),
+            __DIR__.'/Support/config/fonzip.php' => config_path('fonzip.php'),
         ], 'fonzip.config');
     }
 
